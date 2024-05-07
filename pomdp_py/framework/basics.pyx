@@ -209,9 +209,14 @@ cdef class PolicyModel:
     also be treated as modeling :math:`\pi(a|h_t)` by regarding
     `state` parameters as `history`.
 
-    The reason to have a policy model is to accommodate problems
-    with very large action spaces, and the available actions may vary
-    depending on the state (that is, certain actions have probabilty=0)"""
+    The reason to have a policy model is to accommodate problems with
+    very large action spaces, and the available actions may vary
+    depending on the state. In most cases, it acts as a prior
+    distribution over the actions and enables action sampling given a
+    state (or history). This may encode a sophisticated,
+    learning-based prior, or it could be simple uniform. Not to be
+    confused with the policy as a result of POMDP planning or
+    inference for actual execution."""
 
     def probability(self, action, state):
         """
